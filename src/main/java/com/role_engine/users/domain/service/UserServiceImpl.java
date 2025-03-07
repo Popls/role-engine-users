@@ -7,7 +7,6 @@ import com.role_engine.users.infrastructure.repository.UsuarioSpringRepository;
 
 @Component
 public class UserServiceImpl implements UserService{
-
     
     UsuarioSpringRepository usuarioSpringRepository;
 
