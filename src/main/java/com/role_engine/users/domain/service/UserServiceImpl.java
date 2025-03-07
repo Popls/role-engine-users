@@ -2,31 +2,33 @@ package com.role_engine.users.domain.service;
 
 import org.springframework.stereotype.Component;
 
-import com.role_engine.users.domain.model.User;
+import com.role_engine.users.domain.model.Usuario;
+import com.role_engine.users.infrastructure.repository.UsuarioSpringRepository;
 
 @Component
 public class UserServiceImpl implements UserService{
+    
+    UsuarioSpringRepository usuarioSpringRepository;
 
-    @Override
-    public User getUser(String id) {
-        // TODO Dummy getUser
-        return User.builder().build();
+    public UserServiceImpl(UsuarioSpringRepository usuarioSpringRepository){
+        this.usuarioSpringRepository = usuarioSpringRepository;
     }
 
     @Override
-    public void saveUser(User user) {
-        // TODO
+    public Usuario getUser(Integer id) {
+        Usuario result = usuarioSpringRepository.findById(id).get();
+        result.setContrasenaHash(null);
+        return result;
     }
 
     @Override
-    public void deleteUser(String id) {
-        // TODO
+    public void saveUser(Usuario user) {
+        usuarioSpringRepository.save(user);
     }
 
     @Override
-    public User modifyUser(User user) {
-        // TODO Dummy modifyUser
-        return User.builder().build();
+    public void deleteUser(Integer id) {
+        usuarioSpringRepository.deleteById(id);
     }
     
 }

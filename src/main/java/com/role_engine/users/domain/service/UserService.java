@@ -1,15 +1,13 @@
 package com.role_engine.users.domain.service;
 
-import com.role_engine.users.domain.model.User;
+import com.role_engine.users.domain.model.Usuario;
 
 public interface UserService {
 
-    User getUser(String id);
+    Usuario getUser(Integer id);
 
-    void saveUser(User user);
+    void saveUser(Usuario user);
 
-    void deleteUser(String id);
-
-    User modifyUser(User user);
+    void deleteUser(Integer id);
     
 }
